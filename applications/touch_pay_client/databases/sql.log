@@ -53,3 +53,28 @@ CREATE TABLE "auth_cas"(
     "renew" CHAR(1)
 );
 success!
+timestamp: 2017-07-22T13:24:57.799654
+CREATE TABLE "mytable"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "myfield" CHAR(512)
+);
+success!
+timestamp: 2017-07-22T13:37:53.406777
+CREATE TABLE "client"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" CHAR(512),
+    "password" CHAR(512),
+    "idFinger" CHAR(512)
+);
+success!
+timestamp: 2017-07-22T13:37:53.421525
+CREATE TABLE "creditCard"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "cardNumber" CHAR(512),
+    "holder" CHAR(512),
+    "expirationDate" CHAR(512),
+    "brand" CHAR(512),
+    "securityCode" CHAR(512),
+    "client" INTEGER REFERENCES "client" ("id") ON DELETE CASCADE  
+);
+success!

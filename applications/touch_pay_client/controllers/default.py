@@ -21,12 +21,12 @@ def find_finger():
     import serial
     ser = serial.Serial('/dev/ttyACM0', 9600)
     ser.write('5')
-    #ser.write(b'5') #Prefixo b necessario se estiver utilizando Python 3.X
+    # ser.write(b'5') #Prefixo b necessario se estiver utilizando Python 3.X
     while True:
         line = ser.readline()
         print line
         if "FINGERFOUND" in line:
-            id= line.split(",")[1]
+            id = line.split(",")[1]
             ser.close()
             r = requests.get("http://174.138.34.125:8081/walletapi/customer/%s/" % id)
             obj = json.loads(r.text)
@@ -39,7 +39,7 @@ def find_finger():
 def billing():
     value = request.vars.value
     cardId = request.vars.cardId
-    url = "http://174.138.34.125:8081/walletapi/creditCard/%s/transaction/%s" % (cardId,value)
+    url = "http://174.138.34.125:8081/walletapi/creditCard/%s/transaction/%s" % (cardId, value)
 
     headers = {
         'merchantid': "872fbdc6-4ff7-441a-94ce-536c3f1500f8",
@@ -51,6 +51,16 @@ def billing():
     response = requests.request("POST", url, headers=headers)
 
     return response.text
+
+
+def client():
+    form = SQLFORM.grid(db.client)
+    return dict(form=form)
+
+
+def card():
+    form = SQLFORM.grid(db.creditCard)
+    return dict(form=form)
 
 
 def user():

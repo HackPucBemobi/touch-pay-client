@@ -29,7 +29,9 @@ response.google_analytics_id = None
 # ----------------------------------------------------------------------------------------------------------------------
 
 response.menu = [
-    (T('Home'), False, URL('default', 'index'), [])
+    (T('Novo Pagamento'), False, URL('default', 'index'), []),
+    (T('Registrar Biometria'), False, URL('default', 'client'), []),
+    (T('Registrar cartão'), False, URL('default', 'card'), [])
 ]
 
 DEVELOPMENT_MENU = True

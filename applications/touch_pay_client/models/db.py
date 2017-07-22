@@ -130,3 +130,22 @@ auth.settings.reset_password_requires_verification = True
 # after defining tables, uncomment below to enable auditing
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
+
+db.define_table('client',
+                Field('name', 'string'),
+                Field('password', 'string'),
+                Field('idFinger', 'string'),
+                format='%(name)s'
+                )
+
+db.define_table('creditCard',
+                Field('cardNumber', 'string'),
+                Field('holder', 'string'),
+                Field('expirationDate', 'string'),
+                Field('brand', 'string'),
+                Field('securityCode', 'string'),
+                Field('client', 'reference client',
+                      requires=IS_IN_DB(db, db.client.id, '%(name)s'))
+                )
+
+
