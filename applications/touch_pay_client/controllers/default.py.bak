@@ -7,13 +7,11 @@
 # - user is required for authentication and authorization
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
-import json
-
-import requests
 
 
 def index():
     return dict()
+
 
 
 def find_finger():
@@ -25,11 +23,7 @@ def find_finger():
         line = ser.readline()
         print line
         if "FINGERFOUND" in line:
-            id= line.split(",")[1]
-            print id
-            r = requests.get("http://139.82.240.23:8081/walletapi/costumer/%s/" % id)
-            obj_js =  json.loads(r.text)
-
+            return line.split()[1]
     return dict()
 
 

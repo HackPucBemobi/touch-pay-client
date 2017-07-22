@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<class 'serial.serialutil.SerialException'> [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: '/dev/ttyACM0'"
+p3
+sS'layer'
+p4
+S'/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py'
+p5
+sS'code'
+p6
+S'<code object <module> at 0x7f9934d7a9b0, file "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 10>'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/bemobi/Downloads/web2py/gluon/restricted.py", line 219, in restricted\n    exec(ccode, environment)\n  File "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 71, in <module>\n  File "/home/bemobi/Downloads/web2py/gluon/globals.py", line 409, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 20, in find_finger\n    ser = serial.Serial(\'/dev/ttyACM0\', 9600)\n  File "/usr/lib/python2.7/dist-packages/serial/serialutil.py", line 180, in __init__\n    self.open()\n  File "/usr/lib/python2.7/dist-packages/serial/serialposix.py", line 294, in open\n    raise SerialException(msg.errno, "could not open port %s: %s" % (self._port, msg))\nSerialException: [Errno 2] could not open port /dev/ttyACM0: [Errno 2] No such file or directory: \'/dev/ttyACM0\'\n'
+p11
+s.

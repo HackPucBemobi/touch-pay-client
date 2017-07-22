@@ -111,6 +111,7 @@
 'Login': 'Autentique-se',
 'logout': 'Sair',
 'Lost Password': 'Esqueceu sua senha?',
+'Lost password?': 'Lost password?',
 'lost password?': 'esqueceu sua senha?',
 'Main Menu': 'Menu Principal',
 'Manage %(action)s': 'Manage %(action)s',

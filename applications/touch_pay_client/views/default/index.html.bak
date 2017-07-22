@@ -1,0 +1,13 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+
+
+<h2>Touch Pay</h2>
+    
+<form><label>Valor:</label>
+    <input type="text" nane="valor" id="valor" />
+</form>
+
+<br><br><br>
+<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-hand-up"></span> Buscar Digital</a>
+<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> finalizar comprar</a>

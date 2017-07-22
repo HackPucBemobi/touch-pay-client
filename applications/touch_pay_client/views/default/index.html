@@ -3,14 +3,72 @@
 
 
 <h2>Touch Pay</h2>
-    
-<form><label>Valor:</label>
-    <input type="text" nane="valor" id="valor" />
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Novo Pagamento</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="textinput">Valor</label>
+            <div class="col-md-4">
+                <input id="textinput" name="textinput" type="text" placeholder="placeholder"
+                       class="form-control input-md">
+                <span class="help-block">Coloque o valor da compra</span>
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput">Password</label>
+            <div class="col-md-4">
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder"
+                       class="form-control input-md">
+                <span class="help-block">Senha da biometria</span>
+            </div>
+        </div>
+
+
+        <!-- Biometria -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput">Biometria</label>
+            <div class="col-md-4">
+                <div id="finger_data">
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Botao para buscar biometria, finalizar compra -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="passwordinput"></label>
+            <div class="col-md-4">
+                <button href="#" class="btn btn-primary" id="finger_search"><span
+                        class="glyphicon glyphicon-hand-up"></span> Buscar Digital
+                </button>
+                <button href="#" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> finalizar
+                    comprar
+                </button>
+            </div>
+        </div>
+
+
+
+
+    </fieldset>
 </form>
 
-<div id="finger_data">
-    
-</div>
-<br><br><br>
-<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-hand-up"></span> Buscar Digital</a>
-<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> finalizar comprar</a>
+
+<br>
+
+
+<script type="application/javascript">
+    $("#finger_search").on('click', function () {
+        $("#finger_data").append("<img src=\"https://media.giphy.com/media/8P6UWnOG33esE/giphy.gif\" width='100px'>");
+        $("#finger_data").append("<img src=\"http://betterlifeathome.com/communities/7/000/001/372/897//images/4038967_125x125.png\" width='100px'>");
+
+        event.preventDefault();
+    });
+</script>
