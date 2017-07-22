@@ -17,6 +17,7 @@ def index():
 
 
 def find_finger():
+    ps = request.vars.ps
     import serial
     ser = serial.Serial('/dev/ttyACM0', 9600)
     ser.write('5')
@@ -27,9 +28,12 @@ def find_finger():
         if "FINGERFOUND" in line:
             id= line.split(",")[1]
             ser.close()
-            print id
             r = requests.get("http://174.138.34.125:8081/walletapi/customer/%s/" % id)
-            return r.text
+            obj = json.loads(r.text)
+            if ps == obj['password']:
+                return r.text
+            else:
+                return 'error'
 
 
 def billing():

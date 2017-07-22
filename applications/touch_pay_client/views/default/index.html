@@ -26,7 +26,7 @@
             <div class="col-md-4">
                 <input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder"
                        class="form-control input-md">
-                <span class="help-block">Senha da biometria</span>
+                <span class="help-block" id="ps_label">Senha da biometria</span>
             </div>
         </div>
 
@@ -38,9 +38,12 @@
                 <div id="finger_data">
 
                 </div>
-                <div id="finger_data">
-                    <label class="col-md-4 control-label" for="valor" id="user_name"></label>
-                    <label class="col-md-4 control-label" for="email" id="user_email"></label>
+                <div id="finger_user_data" style="display: none">
+
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-success" id="user_name"></li>
+                        <li class="list-group-item list-group-item-success" id="user_email"></li>
+                    </ul>
 
 
                 </div>
@@ -81,13 +84,30 @@
         $("#finger_data").html("");
         $("#user_name").html("");
         $("#user_email").html("");
+        $("#finger_data").show();
+        $("#finger_user_data").hide();
+         $("#ps_label").text("Senha da biometria");
+        $("#ps_label").css("color","");
         $("#finger_data").append("<img src=\"https://media.giphy.com/media/8P6UWnOG33esE/giphy.gif\" width='100px'>");
 
-
+        var ps = $("#passwordinput").val();
         $.ajax({
-            url: "find_finger", success: function (result) {
+            url: "find_finger?ps="+ps, success: function (result) {
                 $("#finger_data").html("");
-                $("#finger_data").append("<img src=\"http://betterlifeathome.com/communities/7/000/001/372/897//images/4038967_125x125.png\" width='100px'>");
+
+
+                if (result === 'error') {
+                $("#finger_data").append("<img src=\"https://cdn2.iconfinder.com/data/icons/security-1/512/wrong_fingerprint-512.png\" width='100px'>");
+                $("#ps_label").text("Senha ou Biometria Invalida");
+                $("#ps_label").css("color","red");
+                return false;
+
+                }else {
+                $("#finger_data").append("<img src=\"https://cdn4.iconfinder.com/data/icons/security-soft-2/512/fingerprint_protection_trace_identity_finger_print_biometry_biometric_identification_v6-512.png\" width='100px'>");
+                $("#finger_data").show();
+                $("#finger_user_data").show();
+                }
+
 
                 var personData = JSON.parse(result);
 
