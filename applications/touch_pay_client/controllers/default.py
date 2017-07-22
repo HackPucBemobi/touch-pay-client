@@ -10,15 +10,21 @@
 
 
 def index():
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
+    return dict()
 
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+
+
+def find_finger():
+    import serial
+    ser = serial.Serial('/dev/ttyACM0', 9600)
+    ser.write('5')
+    #ser.write(b'5') #Prefixo b necessario se estiver utilizando Python 3.X
+    while True:
+        line = ser.readline()
+        print line
+        if "FINGERFOUND" in line:
+            return line.split(",")[1]
+    return dict()
 
 
 def user():
@@ -57,5 +63,3 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
-
-
