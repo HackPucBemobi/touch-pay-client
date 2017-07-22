@@ -38,6 +38,21 @@
                 <div id="finger_data">
 
                 </div>
+                <div id="finger_data">
+                    <label class="col-md-4 control-label" for="valor" id="user_name"></label>
+                    <label class="col-md-4 control-label" for="email" id="user_email"></label>
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="selectbasic">Cartão</label>
+            <div class="col-md-4">
+                <select id="selectbasic" name="selectbasic" class="form-control">
+                </select>
             </div>
         </div>
 
@@ -48,27 +63,63 @@
                 <button href="#" class="btn btn-primary" id="finger_search"><span
                         class="glyphicon glyphicon-hand-up"></span> Buscar Digital
                 </button>
-                <button href="#" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> finalizar
+                <button href="#" class="btn btn-success" id="buy_button"><span class="glyphicon glyphicon-check"></span> finalizar
                     comprar
                 </button>
             </div>
         </div>
 
 
-
-
     </fieldset>
 </form>
-
 
 <br>
 
 
 <script type="application/javascript">
     $("#finger_search").on('click', function () {
+        $("#finger_data").html("");
+        $("#user_name").html("");
+        $("#user_email").html("");
         $("#finger_data").append("<img src=\"https://media.giphy.com/media/8P6UWnOG33esE/giphy.gif\" width='100px'>");
-        $("#finger_data").append("<img src=\"http://betterlifeathome.com/communities/7/000/001/372/897//images/4038967_125x125.png\" width='100px'>");
+
+
+        $.ajax({
+            url: "find_finger", success: function (result) {
+                $("#finger_data").html("");
+                $("#finger_data").append("<img src=\"http://betterlifeathome.com/communities/7/000/001/372/897//images/4038967_125x125.png\" width='100px'>");
+
+                var personData = JSON.parse(result);
+
+                $("#user_name").html("Name: " + personData.name);
+                $("#user_email").html("Email: " + personData.email);
+
+                for (var index in personData.creditCards) {
+
+                    $('#selectbasic').append($('<option>', {value: personData.creditCards[index].id,
+                        text: personData.creditCards[index].expirationDate+" "+personData.creditCards[index].brand
+                    }));
+                }
+            }
+        });
 
         event.preventDefault();
     });
+
+     $("#buy_button").on('click', function () {
+         var value = $("#textinput").val();
+         var cardId= $("#selectbasic").val();
+
+         $.ajax({
+            url: "billing?value="+value+"&cardId="+cardId, success: function (result) {
+
+                var obj =  JSON.parse(result);
+
+                if (obj.status === "success") {
+                    alert("Compra realizada com sucesso");
+                }
+            }
+        });
+         event.preventDefault();
+     });
 </script>

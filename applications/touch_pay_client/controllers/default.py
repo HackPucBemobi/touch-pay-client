@@ -26,11 +26,27 @@ def find_finger():
         print line
         if "FINGERFOUND" in line:
             id= line.split(",")[1]
+            ser.close()
             print id
-            r = requests.get("http://139.82.240.23:8081/walletapi/costumer/%s/" % id)
-            obj_js =  json.loads(r.text)
+            r = requests.get("http://174.138.34.125:8081/walletapi/customer/%s/" % id)
+            return r.text
 
-    return dict()
+
+def billing():
+    value = request.vars.value
+    cardId = request.vars.cardId
+    url = "http://174.138.34.125:8081/walletapi/creditCard/%s/transaction/%s" % (cardId,value)
+
+    headers = {
+        'merchantid': "872fbdc6-4ff7-441a-94ce-536c3f1500f8",
+        'merchantkey': "XPIUJIUHHVSIQWBPUMXRZJBERBOIAIOZNRRWCHEY",
+        'cache-control': "no-cache",
+        'postman-token': "a921eb43-37dd-4bb0-f49f-1df0e660cd65"
+    }
+
+    response = requests.request("POST", url, headers=headers)
+
+    return response.text
 
 
 def user():

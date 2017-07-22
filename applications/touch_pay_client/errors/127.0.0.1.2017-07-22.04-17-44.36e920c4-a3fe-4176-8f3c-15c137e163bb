@@ -1,0 +1,21 @@
+(dp1
+S'output'
+p2
+S"<class 'requests.exceptions.ConnectionError'> HTTPConnectionPool(host='139.82.240.23', port=8081): Max retries exceeded with url: /walletapi/costumer/11/ (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f993404fc50>: Failed to establish a new connection: [Errno 111] Connection refused',))"
+p3
+sS'layer'
+p4
+S'/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py'
+p5
+sS'code'
+p6
+S'<code object <module> at 0x7f991bd8e1b0, file "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 10>'
+p7
+sS'snapshot'
+p8
+(dp9
+sS'traceback'
+p10
+S'Traceback (most recent call last):\n  File "/home/bemobi/Downloads/web2py/gluon/restricted.py", line 219, in restricted\n    exec(ccode, environment)\n  File "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 71, in <module>\n  File "/home/bemobi/Downloads/web2py/gluon/globals.py", line 409, in <lambda>\n    self._caller = lambda f: f()\n  File "/home/bemobi/Downloads/web2py/applications/touch_pay_client/controllers/default.py", line 30, in find_finger\n    r = requests.get("http://139.82.240.23:8081/walletapi/costumer/%s/" % id)\n  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 72, in get\n    return request(\'get\', url, params=params, **kwargs)\n  File "/usr/local/lib/python2.7/dist-packages/requests/api.py", line 58, in request\n    return session.request(method=method, url=url, **kwargs)\n  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 502, in request\n    resp = self.send(prep, **send_kwargs)\n  File "/usr/local/lib/python2.7/dist-packages/requests/sessions.py", line 612, in send\n    r = adapter.send(request, **kwargs)\n  File "/usr/local/lib/python2.7/dist-packages/requests/adapters.py", line 504, in send\n    raise ConnectionError(e, request=request)\nConnectionError: HTTPConnectionPool(host=\'139.82.240.23\', port=8081): Max retries exceeded with url: /walletapi/costumer/11/ (Caused by NewConnectionError(\'<urllib3.connection.HTTPConnection object at 0x7f993404fc50>: Failed to establish a new connection: [Errno 111] Connection refused\',))\n'
+p11
+s.
